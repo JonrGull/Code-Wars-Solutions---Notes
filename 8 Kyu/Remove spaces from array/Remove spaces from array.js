@@ -24,7 +24,7 @@ describe("Example tests", () => {
   Test.assertEquals(noSpace("8aaaaa dddd r     "), "8aaaaaddddr");
 });
 
-//This is a more simple version that doesn't u se RegEx.
+//This is a more simple version that doesn't use RegEx.
 const noSpace = (x) => x.split(" ").join("");
 
 //More traditional
