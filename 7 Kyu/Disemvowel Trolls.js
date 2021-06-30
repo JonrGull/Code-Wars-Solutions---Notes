@@ -29,16 +29,12 @@ function disemvowel(str) {
 
   for (let letter of str) {
     if (
-      letter === "a" ||
-      letter === "e" ||
-      letter === "i" ||
-      letter === "o" ||
-      letter === "u" ||
-      letter === "A" ||
-      letter === "E" ||
-      letter === "I" ||
-      letter === "O" ||
-      letter === "U"
+      letter.toLowercase() === "a" ||
+      letter.toLowercase() === "e" ||
+      letter.toLowercase() === "i" ||
+      letter.toLowercase() === "o" ||
+      letter.toLowercase() === "u" 
+
     ) {
       continue;
     }
@@ -54,4 +50,10 @@ Using regex and the replace method
  */
 /* function disemvowel(str) {
   return str.replace(/[aeiou]/gi, '');
+} */
+
+// using filter. This is what I wanted to do
+/* function disemvowel(str) {
+  const vowels = 'aeiou';
+  return str.split('').filter((letter) => !vowels.includes(letter.toLowerCase())).join('');
 } */
