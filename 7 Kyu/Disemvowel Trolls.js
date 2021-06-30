@@ -48,3 +48,10 @@ function disemvowel(str) {
 }
 
 test(disemvowel("This website is for losers LOL!"), "Ths wbst s fr lsrs LL!");
+
+/* OTHER SOLUTIONS
+Using regex and the replace method
+ */
+/* function disemvowel(str) {
+  return str.replace(/[aeiou]/gi, '');
+} */
