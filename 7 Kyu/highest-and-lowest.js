@@ -20,51 +20,26 @@ function test(actual, expected) {
 
 // My solution
 
-// function highAndLow(stringOfNumbers) {
-//   let result = "";
-//   let splitString = stringOfNumbers.split(" ");
+function highAndLow(stringOfNumbers) {
+  let newArray = stringOfNumbers.split(" ").map((x) => x * 1);
+  let highest = Math.max(...newArray);
+  let lowest = Math.min(...newArray);
 
-// for(let num of splitString){
-//   let highest = Math.max(num)
-// console.log(highest);
-
-// }
-// }
-// test(highAndLow("4 5 29 54 4 0 -214 542 -64 1 -3 6 -6"), "542 -214");
-
-// var numbers = [1,2,3,1]
-// function ff(array) {
-
-// for (let i = 0; i < numbers.length; i++) {
-
-//   console.log(Math.max(numbers[i]));
-
-//   }
-// }
-
-function disemvowel(str) {
-  if (str.length === 0) {
-    return 0;
-  }
-  if (str.length === 1) {
-    return str;
-  }
-
-  let result = "";
-
-  for (let letter of str) {
-    if (
-      letter.toLowerCase() === "a" ||
-      letter.toLowerCase() === "e" ||
-      letter.toLowerCase() === "i" ||
-      letter.toLowerCase() === "o" ||
-      letter.toLowerCase() === "u"
-    ) {
-      continue;
-    }
-    result += letter;
-  }
-  return result;
+  return `${highest} ${lowest}`;
 }
 
-test(disemvowel("This website is for losers LOL!"), "Ths wbst s fr lsrs LL!");
+test(highAndLow("4 5 29 54 4 0 -214 542 -64 1 -3 6 -6"), "542 -214");
+
+// Others
+
+// Ahh this is probably what I should have done instead. Math can convert an individual string of numbers automatically.
+/* function highAndLow(numbers){
+  numbers = numbers.split(' ');
+  return `${Math.max(...numbers)} ${Math.min(...numbers)}`;
+} */
+
+// I think this is a little less readable, but it is shorter.
+/* function highAndLow(numbers){
+  numbers = numbers.split(' ').map(Number);
+  return Math.max.apply(0, numbers) + ' ' + Math.min.apply(0, numbers);
+} */
