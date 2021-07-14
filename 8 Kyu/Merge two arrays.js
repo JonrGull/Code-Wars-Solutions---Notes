@@ -5,10 +5,10 @@ let actual;
 let expected;
 
 function test(actual, expected) {
-  if (actual === expected) {
-    console.log("YAY PASSED");
+  if (JSON.stringify(actual) === JSON.stringify(expected)) {
+    console.log("Yay! Test PASSED.");
   } else {
-    console.error("FAILED. KEEP TRYING");
+    console.error("Test FAILED. Keep trying!");
     console.log("    actual: ", actual);
     console.log("  expected: ", expected);
     console.trace();
@@ -66,6 +66,25 @@ function mergeArrays(array1, array2) {
   return result;
 }
 
+// Others
+//This one is weird to me. But it seems this one works by not worrying about dealing with getting an array.length value.
+//It just keeps pushing until it can't. But the counting part is kinda strange, but it works!
+function mergeArrays(a, b) {
+  var returnArray = [];
+  var counter = 0;
+
+  while (a[counter] || b[counter]) {
+    if (a[counter]) {
+      returnArray.push(a[counter]);
+    }
+    if (b[counter]) {
+      returnArray.push(b[counter]);
+    }
+    counter++;
+  }
+  return returnArray;
+}
+
 test(mergeArrays([1, 2, 3, 4, 5, 6, 7, 8], ["a", "b", "c", "d", "e"]), [
   1,
   "a",
@@ -114,22 +133,3 @@ test(
   ),
   ["b", 2, "r", 5, "a", 8, "u", 23, "r", 67, "s", 6, "e", "q", "z"]
 );
-
-// Others
-//This one is weird to me. But it seems this one works by not worrying about dealing with getting an array.length value.
-//It just keeps pushing until it can't. But the counting part is kinda strange, but it works!
-function mergeArrays(a, b) {
-  var returnArray = [];
-  var counter = 0;
-
-  while (a[counter] || b[counter]) {
-    if (a[counter]) {
-      returnArray.push(a[counter]);
-    }
-    if (b[counter]) {
-      returnArray.push(b[counter]);
-    }
-    counter++;
-  }
-  return returnArray;
-}
