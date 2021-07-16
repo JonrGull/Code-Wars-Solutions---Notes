@@ -24,8 +24,8 @@ Example (Input --> Output)
 12 --> 21
 If the argument passed through is single digit or is already the maximum possible integer, your function should simply return it. */
 
-//function superSize(params) {}
-const superSize = (number) =>
+// Using methods and HOF
+/* const superSize = (number) =>
   parseInt(
     number
       .toString()
@@ -33,6 +33,55 @@ const superSize = (number) =>
       .sort((a, b) => b - a)
       .join("")
   );
+
+//Iteration
+
+function superSize(number) {
+  
+} */
+
+// Others
+/* 
+Ahh this one used .reverse() instead of sort(b-a), that makes a lot more sense. 
+*/
+
+/* function superSize(n) {
+  return parseInt(n.toString().split("").sort().reverse().join(""));
+} */
+
+// ES6
+
+// const superSize = (n) => parseInt(n.toString().split("").sort().reverse().join(""));
+
+//
+/* 
+Can also do +num to convert back to a number instead of parseInt
+*/
+// superSize = (num) => +num.toString().split``.sort((a, b) => b - a).join``;
+
+//Mike's without turning it into a string and no sort()
+​
+function superSize(num){
+  let number = num
+  let cache = [];
+  let results = 0;
+  
+  while (number > 0) {
+    let lastDigit = number % 10; // to get single digit
+    cache.push(lastDigit);
+    number = (number - lastDigit) / 10;
+  }
+  
+  let decimalPlace = 0
+  while (cache.length > 0) { // in place of sort
+    let minValue = Math.min(...cache);
+    results += minValue * (10 ** decimalPlace);
+    cache.splice(cache.indexOf(minValue), 1);
+    decimalPlace++;
+  }
+  
+  return results;
+}
 
 test(superSize(69), 96);
 test(superSize(513), 531);
@@ -43,18 +92,3 @@ test(superSize(123456789), 987654321);
 test(superSize(700000000001), 710000000000);
 test(superSize(666666), 666666);
 test(superSize(2), 2);
-
-// Others
-/* 
-Ahh this one used .reverse() instead of sort(b-a), that makes a lot more sense. 
-*/
-
-function superSize(n) {
-  return parseInt(n.toString().split("").sort().reverse().join(""));
-}
-
-//
-/* 
-Can also do +num to convert back to a number instead of parseInt
-*/
-superSize = (num) => +num.toString().split``.sort((a, b) => b - a).join``;
