@@ -29,29 +29,16 @@ Zero alone is fine, don't worry about it. Poor guy anyway
 
 */
 
-// My solution. It isn't elegant at all, but I wanted to use splice instead of replace.
-/* function noBoringZeros(number) {
+// My solution.
+function noBoringZeros(number) {
   if (number === 0) return 0; // return if only 0
 
   let array = number.toString().split("");
 
-  for (let i = 0; i < array.length + array.length; i++) {
-    if (array[array.length - 1] === "0") {
-      array.splice(-1);
-    }
+  while (array[array.length - 1] === "0") {
+    array.pop();
   }
   return +array.join("");
-} */
-
-function noBoringZeros(number) {
-  return number
-    .toString()
-    .split("")
-    .map((x) => {
-      if (x === "0") {
-        x.pop();
-      }
-    });
 }
 
 // Mike's recursion. Keep dividing by 10 until n / 10 does not have a remainder that equals 0 or n is just 0
@@ -81,6 +68,21 @@ function noBoringZeros(x) {
     }
   }
   return Number(a.join(""));
+}
+
+// For my future self - if you don't know how many times you need to iterate, you should do a while loop or use recursion. 
+// But this is not an optimal solution.
+function noBoringZeros(number) {
+  if (number === 0) return 0; // return if only 0
+
+  let array = number.toString().split("");
+
+  for (let i = 0; i < array.length + array.length; i++) {
+    if (array[array.length - 1] === "0") {
+      array.splice(-1);
+    }
+  }
+  return +array.join("");
 }
 
 test(noBoringZeros(1450), 145);
