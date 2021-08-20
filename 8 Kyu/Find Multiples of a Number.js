@@ -42,7 +42,7 @@ function findMultiples(integer, limit) {
 }
 // Recursion
 /* 
-need to create an array that is pased in each time
+need to create an array that is passed in each time
   we want to keep integer the same number each time, and just add on to the total to be passed to the recursion call
 
   base case : if integer is greater or equal to limit, return finished array
