@@ -60,12 +60,20 @@ function findMultiples(integer, limit, array = []) {
   return findMultiples(array[0] + integer, limit, array);
 }
 
+//without push
+function findMultiples(integer, limit, array = [integer]) {
+  if (integer > limit) {
+    return array;
+  }
+  return findMultiples(array[0] + integer, limit, [...array, integer]);
+}
+
 // Other solutions on CW
-function findMultiples(int, limit) {
+/* function findMultiples(int, limit) {
   return Array(Math.floor(limit / int))
     .fill(1)
     .map((x, i) => int * (i + 1));
-}
+} */
 
 test(findMultiples(5, 25), [5, 10, 15, 20, 25]);
 test(findMultiples(1, 2), [1, 2]);
