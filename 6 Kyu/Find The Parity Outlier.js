@@ -45,3 +45,10 @@ test(findOutlier([1, 2, 3]), 2);
 test(findOutlier([2, 6, 8, 10, 3]), 3);
 test(findOutlier([0, 0, 3, 0, 0]), 3);
 test(findOutlier([1, 1, 0, 1, 1]), 0);
+
+// This is the best solution with methods
+/* function findOutlier(array){
+  const even = array.filter(num => num % 2 === 0);
+  const odd  = array.filter(num => num % 2 !== 0);
+  return even.length === 1 ? even[0] : odd[0];
+} */
